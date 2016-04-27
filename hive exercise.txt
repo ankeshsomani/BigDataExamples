@@ -1,0 +1,20 @@
+create table book(word string)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ' '
+LINES TERMINATED BY '\n'
+;
+
+ show tables;
+
+  describe book;
+
+hive> LOAD DATA INPATH 'hdfs:/small/war_and_peace.txt' INTO TABLE  book;
+hive> ubuntu@ubuntu:~$ select * from book;
+hive> LOAD DATA INPATH '/big/201201hourly.txt' INTO TABLE book;
+
+CREATE TABLE IF NOT EXISTS employee (eid int, name String, salary String, 
+destination String)
+ROW FORMAT DELIMITED                                                                         
+FIELDS TERMINATED BY '\t'                                                                    
+LINES TERMINATED BY '\n'                                                                     
+STORED AS TEXTFILE;

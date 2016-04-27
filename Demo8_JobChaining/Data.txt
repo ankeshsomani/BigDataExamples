@@ -1,0 +1,4 @@
+1,Ganesha 2,Rama
+4,Shankar 3,Shiva
+5,Laxmi 6,Saraswati
+8,Veera 7,Bharata

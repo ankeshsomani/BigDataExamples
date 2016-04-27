@@ -1,0 +1,15 @@
+create table storedata(storeid int,datetime String,orderid int,itemcode String,userid String,locationid String,offerstatus String,quantity int,amount int, totalamount int)
+ROW FORMAT DELIMITED 
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+
+;
+LOAD DATA INPATH 'hdfs:/StoresInput/casestudy.csv.gz' INTO TABLE  storedata;
+
+
+INSERT OVERWRITE LOCAL DIRECTORY '/home/ubuntu/tempoutput'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE
+select datetime,itemcode,storeid,locationid,count(distinct userid),sum(totalamount) from storedata 
+group by datetime,itemcode,storeid,locationid;
